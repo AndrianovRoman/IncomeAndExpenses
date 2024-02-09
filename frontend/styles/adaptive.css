@@ -1,0 +1,243 @@
+
+@media screen and (max-width: 1200px){
+    .main-header {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .main-header .btn-outline-primary {
+        margin-right: 0;
+    }
+    .graph {
+        flex-wrap: wrap;
+        gap: 100px;
+    }
+    .hr2 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1042px){
+    .incomeAndExpenses-header {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .incomeAndExpenses-header .btn-outline-primary {
+         margin-right: 0;
+    }
+
+}
+
+@media screen and (max-width: 1024px){
+    .title {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+    .main-header {
+        margin-bottom: 100px;
+    }
+    .graph {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+    }
+    .graph-item-title {
+        font-size: 22px;
+    }
+
+}
+
+@media screen and (max-width: 768px){
+    .sidebar {
+        display: none;
+        width: 100%;
+    }
+    .burger {
+        display: block;
+    }
+    .incomeAndExpenses {
+        padding: 60px 20px;
+    }
+    .incomeAndExpenses-header .btn {
+        width: 80px;
+        font-size: 14px;
+    }
+    .incomeAndExpenses-title {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    .createIncomeAndExpenses-title {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    .createIncomeAndExpenses-form input {
+        width: 350px;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .income {
+        padding: 60px 20px;
+    }
+    .income-title {
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    .income-card {
+        justify-content: center;
+    }
+    .card {
+        width: 300px;
+        height: 90px;
+    }
+    .card-body {
+        padding: 10px;
+    }
+    .card-title {
+        font-size: 20px;
+    }
+    .card-button .btn {
+        font-size: 14px;
+    }
+    .createIncome-title {
+        font-size: 30px;
+        text-align: center;
+    }
+    .createIncome-input {
+        width: 300px;
+        position: relative;
+        left: calc(100% / 2 - 150px);
+    }
+    .createIncome-actions {
+        justify-content: center;
+    }
+    .table>.thead {
+        font-size: 10px;
+    }
+    .table tbody td {
+        font-size: 10px;
+    }
+    .table a {
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .graph-item {
+        width: 350px;
+        height: 370px;
+    }
+    .main-header .btn {
+        width: 80px;
+        font-size: 14px;
+    }
+    .modal-dialog {
+        width: 330px;
+        margin: 0 auto;
+    }
+    .modal-content {
+        width: 330px;
+        height: 200px;
+        padding: 10px;
+    }
+    .modal-header {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .createIncomeAndExpenses-title {
+        text-align: center;
+        font-size: 25px;
+    }
+    .createIncomeAndExpenses-form {
+        align-items: center;
+    }
+    .createIncomeAndExpenses-form input {
+        width: 280px
+    }
+    .createIncomeAndExpenses-actions {
+        justify-content: center;
+        gap: 30px;
+    }
+}
+
+@media screen and (max-width: 475px){
+    .main {
+        padding: 60px 20px;
+    }
+    .title {
+        font-size: 20px;
+    }
+    .main-header {
+        margin-bottom: 40px
+    }
+    .graph-item-title {
+        font-size: 18px;
+    }
+    .graph-item {
+        width: 250px;
+        height: 270px;
+    }
+    .main-header .btn {
+        width: 50px;
+        font-size: 10px;
+        padding: 0;
+    }
+    .incomeAndExpenses-header .btn {
+        width: 50px;
+        font-size: 10px;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 475px){
+    .login-form {
+        width: 300px;
+    }
+    .login-title {
+        font-size: 30px;
+    }
+    .login-logo {
+        margin-top: 40px;
+    }
+    .card {
+        width: 270px;
+    }
+    .modal-dialog {
+        width: 250px;
+        margin: 0 auto;
+    }
+    .modal-content {
+        width: 250px;
+        height: 150px;
+        padding: 10px;
+    }
+    .modal-header {
+        margin-bottom: 20px;
+    }
+    .modal-title {
+        font-size: 14px;
+    }
+    .modal-footer-btn {
+        line-height: 14px;
+        padding: 10px;
+    }
+    .createIncome {
+        padding: 60px 20px;
+    }
+    .createIncome-title {
+        font-size: 25px;
+        margin-bottom: 20px;
+    }
+    .incomeAndExpenses-title {
+        font-size: 25px;
+    }
+    .createIncome-input {
+        width: 250px;
+        left: calc(100% / 2 - 125px);
+    }
+    .createIncomeAndExpenses {
+        padding: 60px 20px;
+    }
+}

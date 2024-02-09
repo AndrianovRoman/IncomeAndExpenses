@@ -1,0 +1,170 @@
+
+.incomeAndExpenses {
+    padding: 100px 60px;
+}
+
+.incomeAndExpenses-title {
+    font-weight: 500;
+    font-size: 40px;
+    color: #052c65;
+    margin-bottom: 40px;
+}
+
+.incomeAndExpenses-actions {
+    margin-bottom: 40px;
+    display: flex;
+    gap: 10px;
+}
+
+.incomeAndExpenses-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.btn-outline-primary {
+    border-radius: 4px;
+    border: 1px solid #6C757D;
+    margin-right: 20px;
+    width: 100px;
+    height: 37px;
+    padding: 9px 12px;
+    color: #6C757D;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 0;
+    letter-spacing: 0.457px;
+}
+
+.btn-outline-primary:hover {
+    background: #6C757D;
+    color: #FFF;
+    border: 1px solid #6C757D;
+}
+
+.btn-outline-primary:focus-visible {
+    box-shadow: none;
+    background: #6C757D;
+    color: #FFF;
+    border: 1px solid #6C757D;
+}
+
+.btn-outline-primary .active {
+    background: #6C757D;
+    color: #FFF;
+}
+
+.btn-group>.btn:not(:last-child):not(.dropdown-toggle) {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.btn-group>:not(.btn-check)+.btn {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.btn-check:checked+.btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check)+.btn:active {
+    color: #FFF;
+    background-color: #6C757D;
+    border-color: #6C757D;
+}
+
+.data span {
+    margin-right: 17px;
+    color: #000;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.457px;
+}
+
+.data a {
+    margin-right: 27px;
+    color: #6C757D;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.457px;
+    text-decoration-line: underline;
+}
+
+.table {
+    text-align: center;
+}
+
+.table>:not(caption)>*>* {
+    color: #052c65;
+}
+
+.table>.thead {
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.08em;
+    color: #052c65;
+}
+
+.table tbody td {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 144%;
+    color: #000;
+}
+
+.table td.inc {
+    color: #198754;
+}
+
+.table td.exp {
+    color: #dc3545;
+}
+
+.table a {
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.modal-dialog {
+    top: calc(50% - 100px);
+}
+
+.modal-content {
+    padding: 40px;
+    border: 1px solid #ced4da;
+    border-radius: 12px;
+    width: 530px;
+    height: 161px;
+}
+
+.modal-header {
+    margin-bottom: 20px;
+}
+
+.modal-title {
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+    color: #290661;
+}
+
+.modal-header, .modal-footer {
+    border: 0;
+    justify-content: center;
+    padding: 0;
+}
+
+.modal-footer-btn {
+    border-radius: 5px;
+    padding: 12px 16px;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+    color: #fff;
+    box-sizing: border-box;
+    line-height: 12px;
+}

@@ -1,0 +1,38 @@
+
+.createIncomeAndExpenses {
+    padding: 100px 60px;
+}
+
+.createIncomeAndExpenses-title {
+    font-weight: 500;
+    font-size: 40px;
+    color: #052c65;
+    margin-bottom: 40px;
+}
+
+.createIncomeAndExpenses-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.createIncomeAndExpenses-form input {
+    font-weight: 400;
+    font-size: 15px;
+    color: #000;
+    padding: 7px 16px;
+    width: 397px;
+    border: 1px solid #6C757D;
+    border-radius: 4px;
+    outline: none;
+}
+
+.createIncomeAndExpenses-form input::placeholder {
+    color: #6c757d;
+}
+
+.createIncomeAndExpenses-actions {
+    display: flex;
+    gap: 10px;
+}

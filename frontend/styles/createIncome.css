@@ -1,0 +1,48 @@
+
+.createIncome {
+    padding: 100px 60px;
+}
+
+.createIncome-title {
+    font-weight: 500;
+    font-size: 40px;
+    color: #052c65;
+    margin-bottom: 40px;
+}
+
+.createIncome-input {
+    width: 397px;
+    /*height: 38px;*/
+    padding: 7px 16px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    line-height: 22px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    outline: none;
+    font-weight: 400;
+    font-size: 15px;
+    color: #000;
+}
+
+.createIncome-input::placeholder {
+    color: #6c757d;
+    line-height: 22px;
+}
+
+.createIncome-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.createIncome-btn {
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
+    padding: 11px 16px;
+    line-height: 14px;
+    /*width: 83px;*/
+    /*height: 38px;*/
+}

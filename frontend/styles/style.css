@@ -1,0 +1,134 @@
+.login-logo {
+    margin-top: 150px;
+    margin-bottom: 60px;
+}
+
+.login-form {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.form-floating {
+    height: 38px;
+}
+
+.form-floating .form-control {
+    height: 38px;
+    min-height: 38px;
+    padding: 7px 13px 7px 51px;
+}
+
+.form-floating>label {
+    padding: 7px 13px 7px 51px;
+    z-index: 1;
+}
+
+.form-floating>.form-control:focus~label {
+    transform: scale(.7) translateY(-0.5rem) translateX(0.5rem);
+}
+
+#person::before {
+    content: url("../static/image/person.svg");
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    overflow: hidden;
+    text-align: start;
+}
+
+#email::before {
+    content: url("../static/image/email.svg");
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    overflow: hidden;
+    text-align: start;
+}
+
+#password::before {
+    content: url("../static/image/password.svg");
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    overflow: hidden;
+    text-align: start;
+}
+
+#repeatPassword::before {
+    content: url("../static/image/password.svg");
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    overflow: hidden;
+    text-align: start;
+}
+
+.login-title {
+    color: #052C65;
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.login-form-label {
+    color: #6C757D;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 24px; /* 160% */
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+}
+
+.form-check-input {
+    width: 13px;
+    height: 13px;
+    border-radius: 2px;
+    border: 1px solid #DEE2E6;
+    margin-right: 12px;
+    margin-top: 0;
+}
+
+.form-check-label {
+    color: #000;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 23px; /* 191.667% */
+}
+
+.button {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.login-extra {
+    color: #000;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.login-extra a {
+    color: #0D6EFD;
+    text-decoration-line: underline;
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+    border-radius: 5px 5px 5px 5px;
+}
+
+.form-control.error {
+    color: #212529;
+    background-color: #FFF;
+    border-color: #ff0000;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(255,0,0,.25);
+}
