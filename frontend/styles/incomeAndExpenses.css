@@ -1,6 +1,7 @@
 
 .incomeAndExpenses {
     padding: 100px 60px;
+    max-width: 100%;
 }
 
 .incomeAndExpenses-title {
@@ -94,8 +95,13 @@
     text-decoration-line: underline;
 }
 
+.incomeAndExpenses-table {
+    overflow-x: auto;
+}
+
 .table {
     text-align: center;
+    min-width: 670px;
 }
 
 .table>:not(caption)>*>* {
