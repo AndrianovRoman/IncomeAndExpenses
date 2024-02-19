@@ -1,4 +1,4 @@
-import {Index} from "./components";
+import {Index} from "./components/index.js";
 
 export class Router {
     constructor() {
@@ -17,6 +17,70 @@ export class Router {
                 title: 'Доходы',
                 template: 'templates/income.html',
                 styles: 'styles/income.css',
+                load: () => {
+                }
+            },
+            {
+                route: '#/expenses',
+                title: 'Расходы',
+                template: 'templates/expenses.html',
+                styles: 'styles/expenses.css',
+                load: () => {
+                }
+            },
+            {
+                route: '#/incomeAndExpenses',
+                title: 'Доходы и расходы',
+                template: 'templates/incomeAndExpenses.html',
+                styles: 'styles/incomeAndExpenses.css',
+                load: () => {
+                }
+            },
+            {
+                route: '#/createExpenses',
+                title: 'Создать расход',
+                template: 'templates/createExpenses.html',
+                styles: 'styles/createIncome.css',
+                load: () => {
+                }
+            },
+            {
+                route: '#/createIncome',
+                title: 'Создать доход',
+                template: 'templates/createIncome.html',
+                styles: 'styles/createIncome.css',
+                load: () => {
+                }
+            },
+            {
+                route: '#/uploadExpenses',
+                title: 'Редактировать расход',
+                template: 'templates/uploadExpenses.html',
+                styles: 'styles/createIncome.css',
+                load: () => {
+                }
+            },
+            {
+                route: '#/uploadIncome',
+                title: 'Редактировать доход',
+                template: 'templates/uploadIncome.html',
+                styles: 'styles/createIncome.css',
+                load: () => {
+                }
+            },
+            {
+                route: '#/createIncomeAndExpenses',
+                title: 'Создать доход и расход',
+                template: 'templates/createIncomeAndExpenses.html',
+                styles: 'styles/createIncomeAndExpenses.css',
+                load: () => {
+                }
+            },
+            {
+                route: '#/uploadIncomeAndExpenses',
+                title: 'Редактировать доход и расход',
+                template: 'templates/uploadIncomeAndExpenses.html',
+                styles: 'styles/createIncomeAndExpenses.css',
                 load: () => {
                 }
             },
