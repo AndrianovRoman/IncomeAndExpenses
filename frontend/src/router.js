@@ -1,4 +1,4 @@
-import {Index} from "./components/index.js";
+import {Index} from './components/index.js';
 
 export class Router {
     constructor() {
@@ -10,6 +10,22 @@ export class Router {
                 styles: 'styles/index.css',
                 load: () => {
                     new Index();
+                }
+            },
+            {
+                route: '#/login',
+                title: 'Вход',
+                template: 'templates/login.html',
+                styles: 'styles/style.css',
+                load: () => {
+                }
+            },
+            {
+                route: '#/signup',
+                title: 'Регистрация',
+                template: 'templates/signup.html',
+                styles: 'styles/style.css',
+                load: () => {
                 }
             },
             {

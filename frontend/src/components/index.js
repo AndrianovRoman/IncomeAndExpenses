@@ -1,5 +1,14 @@
 export class Index {
     constructor() {
+        this.graph();
+        // this.account();
+    }
+
+    // account() {
+    //     location.href = '#/login';
+    // }
+
+    graph() {
         let ctxD = document.getElementById('myChartD').getContext('2d');
         let ctxR = document.getElementById('myChartR').getContext('2d');
         let myChartD = new Chart(ctxD, {
