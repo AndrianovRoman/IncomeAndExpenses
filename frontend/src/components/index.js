@@ -1,5 +1,13 @@
 export class Index {
     constructor() {
+        this.aside = document.getElementById('aside');
+        this.burger = document.getElementById('burger');
+        this.close = document.getElementById('close');
+        this.layout = document.querySelector('.layout');
+        this.aside.removeAttribute('style');
+        this.burger.removeAttribute('style');
+        this.close.removeAttribute('style');
+        this.layout.removeAttribute('style');
         this.graph();
         // this.account();
     }

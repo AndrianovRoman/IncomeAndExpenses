@@ -1,4 +1,5 @@
 import {Index} from './components/index.js';
+import {Login} from './components/login.js';
 
 export class Router {
     constructor() {
@@ -18,6 +19,7 @@ export class Router {
                 template: 'templates/login.html',
                 styles: 'styles/style.css',
                 load: () => {
+                    new Login();
                 }
             },
             {
@@ -26,6 +28,7 @@ export class Router {
                 template: 'templates/signup.html',
                 styles: 'styles/style.css',
                 load: () => {
+                    new Login();
                 }
             },
             {
