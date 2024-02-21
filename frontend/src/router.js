@@ -19,7 +19,7 @@ export class Router {
                 template: 'templates/login.html',
                 styles: 'styles/style.css',
                 load: () => {
-                    new Login();
+                    new Login('login');
                 }
             },
             {
@@ -28,7 +28,7 @@ export class Router {
                 template: 'templates/signup.html',
                 styles: 'styles/style.css',
                 load: () => {
-                    new Login();
+                    new Login('signup');
                 }
             },
             {
