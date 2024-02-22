@@ -23,6 +23,9 @@ export class Login {
         this.processElement = null;
         this.page = page;
 
+        this.password = document.getElementById('floatingPassword');
+        this.passwordRepeat = document.getElementById('floatingRepeatPassword');
+
         this.fields = [
             {
                 name: 'email',
@@ -46,6 +49,13 @@ export class Login {
                 id: 'floatingPerson',
                 element: null,
                 regex: /([А-ЯЁ][а-яё]+[\-\s]?){3,}/,
+                valid: false,
+            },
+            {
+                name: 'passwordRepeat',
+                id: 'floatingRepeatPassword',
+                element: null,
+                regex: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/,
                 valid: false,
             });
         }
@@ -100,6 +110,12 @@ export class Login {
         if(this.validateForm()) {
             const email = this.fields.find(item => item.name === 'email').element.value;
             const password = this.fields.find(item => item.name === 'password').element.value;
+            const passwordRepeat = this.fields.find(item => item.name === 'passwordRepeat').element.value;
+
+            if (password !== passwordRepeat) {
+                this.processElement.setAttribute('disabled', 'disabled');
+                this.passwordRepeat.classList.add('error');
+            }
 
             if (this.page === 'signup') {
 
@@ -108,7 +124,7 @@ export class Login {
                 const lastName = nameArray[0];
 
                 try{
-                    const result = await CustomHttp.request('http://localhost:6000/api/signup', 'POST', {
+                    const result = await CustomHttp.request(config.host + '/signup', 'POST', {
                         name: name,
                         lastName: lastName,
                         email: email,
@@ -117,40 +133,50 @@ export class Login {
                     });
 
                     if (result) {
+
                         if (result.error || !result.user) {
                             throw new Error(result.message);
                         }
 
                         location.href = '#/';
+                        this.aside.removeAttribute('style');
+                        this.burger.removeAttribute('style');
+                        this.close.removeAttribute('style');
+                        this.layout.removeAttribute('style');
                     }
                 } catch (error) {
                     console.log(error);
                 }
-            } else {
-                try {
-                    const result = await CustomHttp.request(config.host + '/login', 'POST', {
-                        email: email,
-                        password: password,
-                    });
+            }
+            try {
+                const result = await CustomHttp.request(config.host + '/login', 'POST', {
+                    email: email,
+                    password: password,
+                });
 
-                    if (result) {
-                        if (result.error || !result.accessToken || !result.refreshToken
-                            || !result.fullName || !result.userId) {
-                            throw new Error(result.message);
-                        }
+                if (result) {
 
-                        Auth.setTokens(result.accessToken, result.refreshToken);
-                        Auth.setUserInfo({
-                            fullName: result.fullName,
-                            userId: result.userId
-                        })
-                        localStorage.setItem('email', email);
-                        // console.log(localStorage.getItem('email'));
-                        location.href = '#/';
+                    if (result.error || !result.tokens.accessToken || !result.tokens.refreshToken
+                        || !result.user.name || !result.user.id || !result.user.lastName) {
+                        throw new Error(result.message);
                     }
-                } catch (error) {
-                    console.log(error);
+
+                    Auth.setTokens(result.tokens.accessToken, result.tokens.refreshToken);
+                    Auth.setUserInfo({
+                        fullName: result.user.lastName + ' ' + result.user.name,
+                        userId: result.user.id
+                    })
+                    localStorage.setItem('email', email);
+                    localStorage.setItem('fullName', result.user.lastName + ' ' + result.user.name);
+                    // console.log(localStorage.getItem('email'));
+                    location.href = '#/';
+                    this.aside.removeAttribute('style');
+                    this.burger.removeAttribute('style');
+                    this.close.removeAttribute('style');
+                    this.layout.removeAttribute('style');
                 }
+            } catch (error) {
+                console.log(error);
             }
         }
     }

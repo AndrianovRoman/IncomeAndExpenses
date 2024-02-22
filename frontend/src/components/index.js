@@ -1,20 +1,20 @@
+import {Auth} from "../services/auth.js";
 export class Index {
     constructor() {
-        this.aside = document.getElementById('aside');
-        this.burger = document.getElementById('burger');
-        this.close = document.getElementById('close');
-        this.layout = document.querySelector('.layout');
-        this.aside.removeAttribute('style');
-        this.burger.removeAttribute('style');
-        this.close.removeAttribute('style');
-        this.layout.removeAttribute('style');
+
+        const accessToken = localStorage.getItem(Auth.accessTokenKey);
+        if(!accessToken) {
+            location.href = '#/login';
+            return;
+        }
+
+        const fullName = document.getElementById('fullName');
+        fullName.innerText = localStorage.getItem('fullName');
+
         this.graph();
-        // this.account();
     }
 
-    // account() {
-    //     location.href = '#/login';
-    // }
+
 
     graph() {
         let ctxD = document.getElementById('myChartD').getContext('2d');

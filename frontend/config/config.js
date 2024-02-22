@@ -1,3 +1,3 @@
 export default {
-    host: 'http://localhost:6000/api'
+    host: 'http://localhost:8081/api'
 }

@@ -1,5 +1,6 @@
 import {Index} from './components/index.js';
 import {Login} from './components/login.js';
+import {Auth} from "./services/auth.js";
 
 export class Router {
     constructor() {
@@ -107,12 +108,21 @@ export class Router {
     }
 
     async openRoute() {
+
+        const urlRoute = window.location.hash.split('?')[0];
+
+        if (urlRoute === '#/logout') {
+            await Auth.logout();
+            window.location.href = '#/login';
+            return;
+        }
+
         const newRoute = this.routes.find(item => {
             return item.route === window.location.hash;
         });
 
         if(!newRoute) {
-            window.location.href = '#/';
+            window.location.href = '#/login';
             return;
         }
 
