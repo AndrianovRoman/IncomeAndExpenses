@@ -110,42 +110,43 @@ export class Login {
         if(this.validateForm()) {
             const email = this.fields.find(item => item.name === 'email').element.value;
             const password = this.fields.find(item => item.name === 'password').element.value;
-            const passwordRepeat = this.fields.find(item => item.name === 'passwordRepeat').element.value;
-
-            if (password !== passwordRepeat) {
-                this.processElement.setAttribute('disabled', 'disabled');
-                this.passwordRepeat.classList.add('error');
-            }
 
             if (this.page === 'signup') {
 
-                const nameArray = this.fields.find(item => item.name === 'name').element.value.split(' ');
-                const name = nameArray[1];
-                const lastName = nameArray[0];
+                const passwordRepeat = this.fields.find(item => item.name === 'passwordRepeat').element.value;
+                if (password !== passwordRepeat) {
+                    this.processElement.setAttribute('disabled', 'disabled');
+                    this.passwordRepeat.classList.add('error');
+                    throw new Error('Пароли не совпадают');
+                } else {
+                    const nameArray = this.fields.find(item => item.name === 'name').element.value.split(' ');
+                    const name = nameArray[1];
+                    const lastName = nameArray[0];
 
-                try{
-                    const result = await CustomHttp.request(config.host + '/signup', 'POST', {
-                        name: name,
-                        lastName: lastName,
-                        email: email,
-                        password: password,
-                        passwordRepeat: password,
-                    });
+                    try{
+                        const result = await CustomHttp.request(config.host + '/signup', 'POST', {
+                            name: name,
+                            lastName: lastName,
+                            email: email,
+                            password: password,
+                            passwordRepeat: passwordRepeat,
+                        });
 
-                    if (result) {
+                        if (result) {
+                            console.log(result.user);
+                            if (result.error || !result.user) {
+                                throw new Error(result.message);
+                            }
 
-                        if (result.error || !result.user) {
-                            throw new Error(result.message);
+                            location.href = '#/';
+                            this.aside.removeAttribute('style');
+                            this.burger.removeAttribute('style');
+                            this.close.removeAttribute('style');
+                            this.layout.removeAttribute('style');
                         }
-
-                        location.href = '#/';
-                        this.aside.removeAttribute('style');
-                        this.burger.removeAttribute('style');
-                        this.close.removeAttribute('style');
-                        this.layout.removeAttribute('style');
+                    } catch (error) {
+                        console.log(error);
                     }
-                } catch (error) {
-                    console.log(error);
                 }
             }
             try {
