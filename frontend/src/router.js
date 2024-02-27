@@ -1,6 +1,9 @@
 import {Index} from './components/index.js';
 import {Login} from './components/login.js';
 import {Auth} from "./services/auth.js";
+import {Expenses} from "./components/expenses.js";
+import {CreateExpenses} from "./components/createExpenses.js";
+import {UploadExpenses} from "./components/uploadExpenses.js";
 
 export class Router {
     constructor() {
@@ -46,6 +49,7 @@ export class Router {
                 template: 'templates/expenses.html',
                 styles: 'styles/expenses.css',
                 load: () => {
+                    new Expenses();
                 }
             },
             {
@@ -62,6 +66,7 @@ export class Router {
                 template: 'templates/createExpenses.html',
                 styles: 'styles/createIncome.css',
                 load: () => {
+                    new CreateExpenses();
                 }
             },
             {
@@ -78,6 +83,7 @@ export class Router {
                 template: 'templates/uploadExpenses.html',
                 styles: 'styles/createIncome.css',
                 load: () => {
+                    new UploadExpenses();
                 }
             },
             {

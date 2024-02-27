@@ -15,7 +15,10 @@ export class Auth {
                     'Content-type': 'application/json',
                     'Accept': 'application/json',
                 },
-                body: JSON.stringify({refreshToken: refreshToken})
+                body: JSON.stringify({
+                    refreshToken: refreshToken,
+                    rememberMe: false,
+                })
             });
 
             if (response && response.status === 200) {

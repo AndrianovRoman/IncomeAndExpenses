@@ -8,9 +8,6 @@ export class Index {
             return;
         }
 
-        const fullName = document.getElementById('fullName');
-        fullName.innerText = localStorage.getItem('fullName');
-
         this.graph();
     }
 
