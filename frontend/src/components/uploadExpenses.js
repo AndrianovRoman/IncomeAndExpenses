@@ -1,9 +1,16 @@
 import {CustomHttp} from "../services/custom-http.js";
 import config from "../../config/config.js";
+import {Auth} from "../services/auth.js";
 
 export class UploadExpenses {
 
     constructor() {
+
+        const accessToken = localStorage.getItem(Auth.accessTokenKey);
+        if(!accessToken) {
+            location.href = '#/login';
+            return;
+        }
 
         this.init();
     }

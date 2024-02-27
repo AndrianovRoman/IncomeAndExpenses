@@ -20,10 +20,10 @@ close.onclick = () => {
     close.style.display = 'none';
 }
 
-window.addEventListener('resize', () => {
-    if(window.innerWidth > 767) {
-        aside.removeAttribute('style');
-        burger.removeAttribute('style');
-        close.removeAttribute('style');
-    }
-});
+// window.addEventListener('resize', () => {
+//     if(window.innerWidth > 767) {
+//         aside.removeAttribute('style');
+//         burger.removeAttribute('style');
+//         close.removeAttribute('style');
+//     }
+// });
