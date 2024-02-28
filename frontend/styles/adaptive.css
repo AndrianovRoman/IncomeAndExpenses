@@ -111,15 +111,6 @@
     .createIncome-actions {
         justify-content: center;
     }
-    .table>.thead {
-        font-size: 10px;
-    }
-    .table tbody td {
-        font-size: 10px;
-    }
-    .table a {
-        margin-right: 0;
-    }
 }
 
 @media screen and (max-width: 600px){
