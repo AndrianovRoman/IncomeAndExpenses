@@ -1,14 +1,18 @@
 import {Auth} from "../services/auth.js";
+import {CustomHttp} from "../services/custom-http.js";
+import config from "../../config/config.js";
 export class Index {
     constructor() {
 
-        const accessToken = localStorage.getItem(Auth.accessTokenKey);
-        if(!accessToken) {
-            location.href = '#/login';
-            return;
-        }
+        const userInfo = Auth.getUserInfo();
+
+        const fullName = document.getElementById('fullName');
+        fullName.innerText = userInfo.fullName;
+
+        this.balance = null;
 
         this.graph();
+        this.init();
     }
 
 
@@ -90,5 +94,25 @@ export class Index {
                 }
             }
         });
+    }
+
+    async init() {
+        try {
+            const result = await CustomHttp.request(config.host + '/balance', 'GET');
+            this.balance = document.getElementById('balance');
+            // console.log(result);
+            if (result) {
+                // console.log(result);
+                // if (result.error || !result.user) {
+                //     throw new Error(result.message);
+                // }
+
+                this.balance.innerText = result.balance + '$';
+            } else {
+                this.balance.innerText = '0$';
+            }
+        } catch (e) {
+            console.log(e);
+        }
     }
 }

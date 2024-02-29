@@ -1,17 +1,17 @@
+import {Auth} from "../services/auth.js";
 import {CustomHttp} from "../services/custom-http.js";
 import config from "../../config/config.js";
-import {Auth} from "../services/auth.js";
 
-
-export class Expenses {
+export class Income {
     id = '';
     constructor() {
         this.incomeCard = null;
         this.init();
     }
+
     async init() {
         try {
-            const result = await CustomHttp.request(config.host + '/categories/expense', 'GET');
+            const result = await CustomHttp.request(config.host + '/categories/income', 'GET');
             // console.log(result);
             if (result) {
                 // console.log(result);
@@ -30,7 +30,6 @@ export class Expenses {
         this.incomeCard = document.getElementById('income-card');
         if (data && data.length > 0) {
             data.forEach(item => {
-
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.setAttribute('data-id', item.id)
@@ -51,7 +50,7 @@ export class Expenses {
                 btnPrimary.classList.add('btn');
                 btnPrimary.setAttribute('href', '#');
                 btnPrimary.innerText = 'Редактировать';
-                btnPrimary.addEventListener('click', this.uploadExpensesPage);
+                btnPrimary.addEventListener('click', this.uploadIncomePage);
 
                 const btnDanger = document.createElement('a');
                 btnDanger.className = 'btn-danger';
@@ -60,7 +59,6 @@ export class Expenses {
                 btnDanger.setAttribute('data-bs-toggle', 'modal');
                 btnDanger.setAttribute('data-bs-target', '#staticBackdrop');
                 btnDanger.innerText = 'Удалить';
-                const that = this;
                 btnDanger.addEventListener('click', function (e) {
                     that.id = e.target.closest('.card').getAttribute('data-id');
                 });
@@ -82,20 +80,20 @@ export class Expenses {
 
         const cardNew = document.createElement('a');
         cardNew.className = 'card-new';
-        cardNew.setAttribute('href', '#/createExpenses');
+        cardNew.setAttribute('href', '#/createIncome');
         cardNew.innerText = '+'
 
         cardBody.appendChild(cardNew);
         card.appendChild(cardBody);
         this.incomeCard.appendChild(card);
     }
-    async delete(){
+    async delete(e){
         console.log(this.id);
         try {
-            const result = await CustomHttp.request(config.host + '/categories/expense/' + this.id, 'DELETE');
+            const result = await CustomHttp.request(config.host + '/categories/income/' + this.id, 'DELETE');
             console.log(result);
             if(!result.error) {
-                location.href = '#/expenses'
+                location.href = '#/income'
             }
         } catch (e) {
             console.log(e);
@@ -111,12 +109,12 @@ export class Expenses {
     //     console.log(id);
     // }
 
-    uploadExpensesPage(e) {
+    uploadIncomePage(e) {
         e.preventDefault();
         const id = e.target.closest('.card').getAttribute('data-id');
         localStorage.setItem("id", id);
         const text = e.target.closest('.card-body').childNodes[0];
         localStorage.setItem("text", text.innerText);
-        location.href = '#/uploadExpenses';
+        location.href = '#/uploadIncome';
     }
 }

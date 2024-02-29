@@ -4,6 +4,10 @@ import {Auth} from "./services/auth.js";
 import {Expenses} from "./components/expenses.js";
 import {CreateExpenses} from "./components/createExpenses.js";
 import {UploadExpenses} from "./components/uploadExpenses.js";
+import {Income} from "./components/income.js";
+import {CreateIncome} from "./components/createIncome.js";
+import {UploadIncome} from "./components/uploadIncome.js";
+import {IncomeAndExpenses} from "./components/incomeAndExpenses.js";
 
 export class Router {
     constructor() {
@@ -22,6 +26,7 @@ export class Router {
                 title: 'Вход',
                 template: 'templates/login.html',
                 styles: 'styles/style.css',
+                isNotAuth: true,
                 load: () => {
                     new Login('login');
                 }
@@ -31,6 +36,7 @@ export class Router {
                 title: 'Регистрация',
                 template: 'templates/signup.html',
                 styles: 'styles/style.css',
+                isNotAuth: true,
                 load: () => {
                     new Login('signup');
                 }
@@ -41,6 +47,7 @@ export class Router {
                 template: 'templates/income.html',
                 styles: 'styles/income.css',
                 load: () => {
+                    new Income();
                 }
             },
             {
@@ -58,6 +65,7 @@ export class Router {
                 template: 'templates/incomeAndExpenses.html',
                 styles: 'styles/incomeAndExpenses.css',
                 load: () => {
+                    new IncomeAndExpenses();
                 }
             },
             {
@@ -75,6 +83,7 @@ export class Router {
                 template: 'templates/createIncome.html',
                 styles: 'styles/createIncome.css',
                 load: () => {
+                    new CreateIncome();
                 }
             },
             {
@@ -92,6 +101,7 @@ export class Router {
                 template: 'templates/uploadIncome.html',
                 styles: 'styles/createIncome.css',
                 load: () => {
+                    new UploadIncome();
                 }
             },
             {
@@ -130,6 +140,14 @@ export class Router {
         if(!newRoute) {
             window.location.href = '#/login';
             return;
+        }
+
+        if(!newRoute.isNotAuth) {
+            const accessToken = localStorage.getItem(Auth.accessTokenKey);
+            if(!accessToken) {
+                location.href = '#/login';
+                return;
+            }
         }
 
         document.getElementById('content').innerHTML =

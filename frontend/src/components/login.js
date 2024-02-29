@@ -133,7 +133,7 @@ export class Login {
                         });
 
                         if (result) {
-                            console.log(result.user);
+                            // console.log(result.user);
                             if (result.error || !result.user) {
                                 throw new Error(result.message);
                             }
@@ -168,7 +168,7 @@ export class Login {
                         userId: result.user.id
                     })
                     localStorage.setItem('email', email);
-                    localStorage.setItem('fullName', result.user.lastName + ' ' + result.user.name);
+                    // localStorage.setItem('fullName', result.user.lastName + ' ' + result.user.name);
                     // console.log(localStorage.getItem('email'));
                     location.href = '#/';
                     this.aside.removeAttribute('style');
