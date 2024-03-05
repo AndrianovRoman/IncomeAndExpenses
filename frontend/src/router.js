@@ -8,6 +8,8 @@ import {Income} from "./components/income.js";
 import {CreateIncome} from "./components/createIncome.js";
 import {UploadIncome} from "./components/uploadIncome.js";
 import {IncomeAndExpenses} from "./components/incomeAndExpenses.js";
+import {CreateIncomeAndExpenses} from "./components/createIncomeAndExpenses.js";
+import {UploadIncomeAndExpenses} from "./components/uploadIncomeAndExpenses.js";
 
 export class Router {
     constructor() {
@@ -110,6 +112,7 @@ export class Router {
                 template: 'templates/createIncomeAndExpenses.html',
                 styles: 'styles/createIncomeAndExpenses.css',
                 load: () => {
+                    new CreateIncomeAndExpenses();
                 }
             },
             {
@@ -118,6 +121,7 @@ export class Router {
                 template: 'templates/uploadIncomeAndExpenses.html',
                 styles: 'styles/createIncomeAndExpenses.css',
                 load: () => {
+                    new UploadIncomeAndExpenses();
                 }
             },
         ]
