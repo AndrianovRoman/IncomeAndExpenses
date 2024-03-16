@@ -1,35 +1,137 @@
 import {CustomHttp} from "../services/custom-http.js";
 import config from "../../config/config.js";
 import {Auth} from "../services/auth.js";
+import {Balance} from "../services/balance.js";
 
 
 export class IncomeAndExpenses {
+    dateFrom = null;
+    dateTo = null;
+    value;
+    selectedId;
+    period = localStorage.getItem("periodValue");
 
     constructor() {
         this.index = 0;
         this.init();
+        Balance.getBalance();
+
+        let elem = document.querySelector('.btn-group');
+
+        for (let i = 0; i < elem.children.length; i++) {
+            if (elem.children[i].dataset.value === this.period) {
+                elem.children[0].classList.remove('active');
+                elem.children[i].classList.add('active');
+            }
+        }
+
+        this.dateFrom = document.getElementById('dateFrom');
+        this.dateFrom.addEventListener('input', () => {
+            this.workWithDates(this.dateFrom);
+            this.init();
+        });
+
+        this.dateTo = document.getElementById('dateTo');
+        this.dateTo.addEventListener('input', () => {
+            this.workWithDates(this.dateTo);
+            this.init();
+        });
+
+        this.btnActive();
     }
 
     async init() {
-        try {
-            const result = await CustomHttp.request(config.host + '/operations', 'GET');
-            console.log(result);
-            if (result) {
-                console.log(result);
-                // if (result.error || !result.user) {
-                //     throw new Error(result.message);
-                // }
-                this.createPage(result);
+
+        if (!this.period) {
+            this.period = "today";
+        }
+        if (this.period === 'interval') {
+
+            let dateFromValue = localStorage.getItem('dateFrom');
+            let dateToValue = localStorage.getItem('dateTo');
+
+            try {
+                const result = await CustomHttp.request(config.host + '/operations?period=interval&dateFrom=' + dateFromValue + '&dateTo=' + dateToValue, 'GET');
+                // console.log(result);
+                if (result) {
+                    // console.log(result);
+                    // if (result.error || !result.user) {
+                    //     throw new Error(result.message);
+                    // }
+                    this.createPage(result);
+                }
+            } catch (e) {
+                console.log(e);
             }
-        } catch (e) {
-            console.log(e);
+        } else {
+            try {
+                const result = await CustomHttp.request(config.host + '/operations?period=' + this.period, 'GET');
+                // console.log(result);
+                if (result) {
+                    // console.log(result);
+                    // if (result.error || !result.user) {
+                    //     throw new Error(result.message);
+                    // }
+                    this.createPage(result);
+                }
+            } catch (e) {
+                console.log(e);
+            }
         }
 
         document.getElementById('modalDelete').addEventListener('click', () => this.delete());
     }
 
+    workWithDates(item) {
+        // console.log(item.id);
+        if (item.value !== '') {
+            item.className = 'has-value';
+        } else {
+            item.className = '';
+        }
+        localStorage.setItem(item.id, item.value);
+    }
+
+    btnActive() {
+        const btnGroup = document.querySelector('.btn-group');
+        // console.log(btnGroup);
+        for (let i = 0; i < btnGroup.children.length; i++) {
+            if (btnGroup.children[i].classList.contains('active')) {
+                this.value = btnGroup.children[i];
+            }
+        }
+
+        // this.value = btnGroup.children[0];
+        // console.log(this.value);
+
+        btnGroup.onclick = (e) => {
+            // console.log(e.target.dataset.value);
+
+            let target = e.target;
+
+        // && target.classList.contains('active')
+
+            if (target.tagName === 'BUTTON') {
+
+                this.value.classList.remove('active');
+
+                this.period = e.target.dataset.value;
+                localStorage.setItem("periodValue", this.period);
+                this.init();
+
+                if (this.selectedId) {
+                    this.selectedId.classList.remove('active');
+                }
+                this.selectedId = target;
+                this.selectedId.classList.add('active');
+            }
+        }
+    }
+
     createPage(data) {
         this.tbody = document.getElementById('tbody');
+        this.tbody.innerHTML = '';
+        this.index = 0;
         if (data && data.length > 0) {
             data.forEach(item => {
                 // console.log(item);
@@ -102,10 +204,11 @@ export class IncomeAndExpenses {
     }
 
     async delete() {
-        console.log(this.id);
+        // console.log(this.id);
         try {
             const result = await CustomHttp.request(config.host + '/operations/' + this.id, 'DELETE');
             if(!result.error) {
+                // await Balance.getBalance();
                 location.href = '#/incomeAndExpenses'
             }
         } catch (e) {

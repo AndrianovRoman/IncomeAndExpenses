@@ -6,17 +6,21 @@
       <a href="#/createIncomeAndExpenses" class="btn btn-danger">Создать расход</a>
     </div>
     <div class="btn-group incomeAndExpenses-header" role="group" aria-label="Basic outlined example">
-      <button type="button" class="btn btn-outline-primary active">Сегодня</button>
-      <button type="button" class="btn btn-outline-primary">Неделя</button>
-      <button type="button" class="btn btn-outline-primary">Месяц</button>
-      <button type="button" class="btn btn-outline-primary">Год</button>
-      <button type="button" class="btn btn-outline-primary">Все</button>
-      <button type="button" class="btn btn-outline-primary">Интервал</button>
+      <button type="button" class="btn btn-outline-primary active" data-value="today">Сегодня</button>
+      <button type="button" class="btn btn-outline-primary" data-value="week">Неделя</button>
+      <button type="button" class="btn btn-outline-primary" data-value="month">Месяц</button>
+      <button type="button" class="btn btn-outline-primary" data-value="year">Год</button>
+      <button type="button" class="btn btn-outline-primary" data-value="all">Все</button>
+      <button type="button" class="btn btn-outline-primary" data-value="interval">Интервал</button>
       <div class="data">
         <span>с</span>
-        <a href="#/">Дата</a>
+        <div class="pa__middle-item">
+          <input class="pa__middle-input text" type="date" name="date" id="dateFrom" placeholder="Дата" required>
+        </div>
         <span>по</span>
-        <a href="#/">Дата</a>
+        <div class="pa__middle-item">
+          <input class="pa__middle-input text" type="date" name="date" id="dateTo" placeholder="Дата" required>
+        </div>
       </div>
     </div>
     <div class="incomeAndExpenses-table">

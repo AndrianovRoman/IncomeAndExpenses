@@ -1,5 +1,6 @@
 import {CustomHttp} from "../services/custom-http.js";
 import config from "../../config/config.js";
+import {Balance} from "../services/balance.js";
 
 
 export class UploadIncomeAndExpenses {
@@ -103,6 +104,7 @@ export class UploadIncomeAndExpenses {
             });
 
             if (result) {
+                await Balance.getBalance();
                 location.href = '#/incomeAndExpenses';
             }
         } catch (e) {

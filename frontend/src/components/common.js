@@ -1,14 +1,15 @@
 
-// Очень примитивное и простое открытие и закрытие меню!
-
 import {Auth} from "../services/auth.js";
 import {CustomHttp} from "../services/custom-http.js";
 import config from "../../config/config.js";
+import {Balance} from "../services/balance.js";
 
 class Common {
+    selectedTd;
 
     constructor() {
         this.init();
+        // this.updateInterface();
     }
 
     init() {
@@ -23,7 +24,7 @@ class Common {
         fullName.innerText = userInfo.fullName;
 
         this.balance = null;
-        this.getBalance();
+        Balance.getBalance();
 
         burger.onclick = () => {
             aside.style.display = 'flex';
@@ -46,24 +47,48 @@ class Common {
             }
         });
     }
-    async getBalance() {
-        try {
-            const result = await CustomHttp.request(config.host + '/balance', 'GET');
-            let balance = document.getElementById('balance');
-            // console.log(result);
-            if (result) {
-                // console.log(result);
-                // if (result.error || !result.user) {
-                //     throw new Error(result.message);
-                // }
 
-                balance.innerText = result.balance + '$';
-            } else {
-                balance.innerText = '0$';
-            }
-        } catch (e) {
-            console.log(e);
+    // updateInterface() {
+    //     let nav = document.querySelector('.nav');
+    //     // console.log(nav);
+    //
+    //     nav.onclick = function (e) {
+    //         let target = e.target;
+    //
+    //         if (target.tagName !== 'A' && target.className !== 'nav-link'){
+    //             console.log('error)))');
+    //         } else {
+    //             const that = this;
+    //             // console.log(that.selectedTd);
+    //             let main = document.querySelector('.nav-item').children[0];
+    //             // console.log(main);
+    //
+    //             if (main.className === 'nav-link active') {
+    //                 main.classList.remove('active');
+    //                 main.classList.add('link-body-emphasis');
+    //             }
+    //
+    //             if (that.selectedTd) {
+    //                 that.selectedTd.classList.remove('active');
+    //                 that.selectedTd.classList.add('link-body-emphasis');
+    //             }
+    //             that.selectedTd = target;
+    //             that.selectedTd.classList.add('active');
+    //             that.selectedTd.classList.remove('link-body-emphasis');
+    //             // console.log(that.selectedTd);
+    //         }
+    //     }
+    // }
+
+    highlight(a) {
+        if (selectedTd) {
+            selectedTd.classList.remove('active');
+            selectedTd.classList.add('link-body-emphasis');
         }
+        let selectedTd = a;
+        selectedTd.classList.add('active');
+        selectedTd.classList.remove('link-body-emphasis');
     }
+
 }
 new Common();

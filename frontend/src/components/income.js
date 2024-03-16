@@ -59,6 +59,7 @@ export class Income {
                 btnDanger.setAttribute('data-bs-toggle', 'modal');
                 btnDanger.setAttribute('data-bs-target', '#staticBackdrop');
                 btnDanger.innerText = 'Удалить';
+                const that = this;
                 btnDanger.addEventListener('click', function (e) {
                     that.id = e.target.closest('.card').getAttribute('data-id');
                 });
@@ -87,7 +88,7 @@ export class Income {
         card.appendChild(cardBody);
         this.incomeCard.appendChild(card);
     }
-    async delete(e){
+    async delete(){
         console.log(this.id);
         try {
             const result = await CustomHttp.request(config.host + '/categories/income/' + this.id, 'DELETE');
