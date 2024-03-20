@@ -10,6 +10,7 @@ import {UploadIncome} from "./components/uploadIncome.js";
 import {IncomeAndExpenses} from "./components/incomeAndExpenses.js";
 import {CreateIncomeAndExpenses} from "./components/createIncomeAndExpenses.js";
 import {UploadIncomeAndExpenses} from "./components/uploadIncomeAndExpenses.js";
+import {Common} from "./components/common.js";
 
 export class Router {
     constructor() {
@@ -17,6 +18,7 @@ export class Router {
             {
                 route: '#/',
                 title: 'Главная',
+                idActiveElement: 'main',
                 template: 'templates/index.html',
                 styles: 'styles/index.css',
                 load: () => {
@@ -46,6 +48,7 @@ export class Router {
             {
                 route: '#/income',
                 title: 'Доходы',
+                idActiveElement: 'income',
                 template: 'templates/income.html',
                 styles: 'styles/income.css',
                 load: () => {
@@ -55,6 +58,7 @@ export class Router {
             {
                 route: '#/expenses',
                 title: 'Расходы',
+                idActiveElement: 'expenses',
                 template: 'templates/expenses.html',
                 styles: 'styles/expenses.css',
                 load: () => {
@@ -64,6 +68,7 @@ export class Router {
             {
                 route: '#/incomeAndExpenses',
                 title: 'Доходы и расходы',
+                idActiveElement: 'incomeAndExpenses',
                 template: 'templates/incomeAndExpenses.html',
                 styles: 'styles/incomeAndExpenses.css',
                 load: () => {
@@ -73,6 +78,7 @@ export class Router {
             {
                 route: '#/createExpenses',
                 title: 'Создать расход',
+                idActiveElement: 'expenses',
                 template: 'templates/createExpenses.html',
                 styles: 'styles/createIncome.css',
                 load: () => {
@@ -82,6 +88,7 @@ export class Router {
             {
                 route: '#/createIncome',
                 title: 'Создать доход',
+                idActiveElement: 'income',
                 template: 'templates/createIncome.html',
                 styles: 'styles/createIncome.css',
                 load: () => {
@@ -91,6 +98,7 @@ export class Router {
             {
                 route: '#/uploadExpenses',
                 title: 'Редактировать расход',
+                idActiveElement: 'expenses',
                 template: 'templates/uploadExpenses.html',
                 styles: 'styles/createIncome.css',
                 load: () => {
@@ -100,6 +108,7 @@ export class Router {
             {
                 route: '#/uploadIncome',
                 title: 'Редактировать доход',
+                idActiveElement: 'income',
                 template: 'templates/uploadIncome.html',
                 styles: 'styles/createIncome.css',
                 load: () => {
@@ -109,6 +118,7 @@ export class Router {
             {
                 route: '#/createIncomeAndExpenses',
                 title: 'Создать доход и расход',
+                idActiveElement: 'incomeAndExpenses',
                 template: 'templates/createIncomeAndExpenses.html',
                 styles: 'styles/createIncomeAndExpenses.css',
                 load: () => {
@@ -118,6 +128,7 @@ export class Router {
             {
                 route: '#/uploadIncomeAndExpenses',
                 title: 'Редактировать доход и расход',
+                idActiveElement: 'incomeAndExpenses',
                 template: 'templates/uploadIncomeAndExpenses.html',
                 styles: 'styles/createIncomeAndExpenses.css',
                 load: () => {
@@ -160,6 +171,6 @@ export class Router {
         document.getElementById('styles').setAttribute('href', newRoute.styles);
         document.getElementById('page-title').innerText = newRoute.title;
         newRoute.load();
-
+        new Common(newRoute.idActiveElement);
     }
 }

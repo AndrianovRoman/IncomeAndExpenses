@@ -4,10 +4,12 @@ import {CustomHttp} from "../services/custom-http.js";
 import config from "../../config/config.js";
 import {Balance} from "../services/balance.js";
 
-class Common {
+export class Common {
     selectedTd;
+    idActiveElement
 
-    constructor() {
+    constructor(idActiveElement) {
+        this.idActiveElement = idActiveElement;
         this.init();
         // this.updateInterface();
     }
@@ -46,6 +48,13 @@ class Common {
                 close.removeAttribute('style');
             }
         });
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(item => item.classList.remove('active'));
+        navLinks.forEach(item => item.classList.add('link-body-emphasis'));
+
+        const activeElement = document.getElementById(this.idActiveElement);
+        activeElement.classList.add('active');
+        activeElement.classList.remove('link-body-emphasis');
     }
 
     // updateInterface() {
@@ -89,6 +98,4 @@ class Common {
         selectedTd.classList.add('active');
         selectedTd.classList.remove('link-body-emphasis');
     }
-
 }
-new Common();
