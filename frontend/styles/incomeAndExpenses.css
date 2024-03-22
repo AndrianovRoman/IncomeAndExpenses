@@ -76,6 +76,11 @@
     border-color: #6C757D;
 }
 
+.data {
+    display: flex;
+    align-items: center;
+}
+
 .data span {
     margin-right: 17px;
     color: #000;
@@ -173,4 +178,94 @@
     color: #fff;
     box-sizing: border-box;
     line-height: 12px;
+}
+
+/* Date styles */
+
+input[type=date]:required:invalid::-webkit-datetime-edit {
+    color: transparent;
+}
+input[type=date]:focus::-webkit-datetime-edit {
+    color: black;
+}
+
+input[type="date"] {
+    position: relative;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: underline;
+    color: #6C757D;
+    cursor: pointer;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    color: transparent;
+    background: transparent;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-clear-button {
+    z-index: -10;
+}
+
+input[type="date"]::-webkit-input-placeholder {
+    z-index: 99;
+}
+
+input[type="date"]::placeholder {
+    z-index: 99;
+}
+
+input[type="date"]:not(.has-value):before {
+    content: attr(placeholder);
+    width: 100%;
+}
+
+input[type="date"] .has-value:before {
+    content: "";
+    width: 100%;
+}
+
+
+/*input[type="date"] {*/
+/*    padding: 12px 20px;*/
+/*}*/
+
+.pa__top-sec {
+    padding: 50px 0;
+}
+.pa__top-title {
+    margin-bottom: 20px;
+    color: #455582;
+    font-size: 14px;
+}
+.pa__middle-range {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+.pa__middle-item {
+    margin-right: 10px;
+}
+.pa__top-sec input[type="date"] {
+    border: 0;
+    padding: 12px 20px;
+    color: #99a2ba;
+    font-size: 14px;
 }

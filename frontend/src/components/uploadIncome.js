@@ -1,16 +1,16 @@
+import {Auth} from "../services/auth.js";
 import {CustomHttp} from "../services/custom-http.js";
 import config from "../../config/config.js";
-import {Auth} from "../services/auth.js";
 
-export class UploadExpenses {
+export class UploadIncome {
     text = '';
     constructor() {
         this.text = localStorage.getItem('text');
+        // console.log(this.text);
         this.init();
     }
 
-    init(){
-
+    init() {
         this.uploadBtn = document.getElementById('upload');
         this.backBtn = document.getElementById('back');
         this.input = document.getElementById('input');
@@ -27,12 +27,12 @@ export class UploadExpenses {
         // console.log(value);
         // console.log(this.id);
         try {
-            const result = await CustomHttp.request(config.host + '/categories/expense/' + this.id, 'PUT', {
+            const result = await CustomHttp.request(config.host + '/categories/income/' + this.id, 'PUT', {
                 title: value,
             });
             console.log(result);
             if(!result.error) {
-                location.href = '#/expenses';
+                location.href = '#/income';
             }
         } catch (e) {
             console.log(e);
@@ -40,7 +40,7 @@ export class UploadExpenses {
     }
 
     back() {
-        location.href = '#/expenses';
+        location.href = '#/income';
     }
 
 }

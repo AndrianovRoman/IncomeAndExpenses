@@ -17,4 +17,4 @@ app.use("/api/categories/income", incomeCategoriesRoutes);
 app.use("/api/operations", operationsRoutes);
 app.use("/api/balance", balanceRoutes);
 
-app.listen('8081', () => console.log(`Server started`));
+app.listen('8080', () => console.log(`Server started`));
