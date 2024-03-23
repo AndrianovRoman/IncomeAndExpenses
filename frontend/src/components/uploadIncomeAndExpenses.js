@@ -97,7 +97,7 @@ export class UploadIncomeAndExpenses {
         try {
             const result = await CustomHttp.request(config.host + '/operations/' + id, 'PUT', {
                 type: type,
-                amount: amount,
+                amount: Number(amount),
                 date: date,
                 comment: comment,
                 category_id: +category,

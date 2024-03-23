@@ -10,7 +10,9 @@ export class Common {
 
     constructor(idActiveElement) {
         this.idActiveElement = idActiveElement;
-        this.init();
+        if (idActiveElement) {
+            this.init();
+        }
         // this.updateInterface();
     }
 
