@@ -100,7 +100,7 @@ body {
 }
 
 .dropdown-item:focus, .dropdown-item:hover {
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     background-color: #0D6EFD;
 }
 
