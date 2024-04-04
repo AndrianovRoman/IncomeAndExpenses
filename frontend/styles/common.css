@@ -69,8 +69,12 @@ body {
     font-weight: 400;
 }
 
-.nav-link img {
+.nav-link svg {
     margin-right: 10px;
+}
+
+.nav-link.active svg path {
+    fill: #FFF;
 }
 
 .dropdown-menu.show {
@@ -92,10 +96,11 @@ body {
     color: #FFF;
     font-size: 14px;
     font-weight: 400;
+    border-radius: 0;
 }
 
 .dropdown-item:focus, .dropdown-item:hover {
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     background-color: #0D6EFD;
 }
 
